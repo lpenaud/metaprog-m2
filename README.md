@@ -38,3 +38,8 @@ Document def/carnetAttr/testCarnetAttr2.xml does not validate against def/carnet
 ```
 
 Le fichier 3 n'est pas valide puisque celui-ci a un attribut inconuus `football` au lieu de `libelle` et `texte`.
+
+## Auteurs
+
+* [Loïc Penaud](https://lpenaud.github.io)
+* [Maxime Metz](https://github.com/maximemetz)
