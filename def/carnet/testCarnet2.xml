@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE carnet PUBLIC "CarnetId" "carnet.dtd">
+<carnet>
+	<type>commun</type>
+	<contact>
+		<nom>Bessac</nom>
+		<prenom>Bilbo</prenom>
+		<telephone>0298989898</telephone>
+		<information>
+			<libelle>Hobby</libelle>
+			<texte>Musique</texte>
+		</information>
+		<information>
+			<libelle>Loisir</libelle>
+			<texte>Kayak Polo</texte>
+		</information>
+	</contact>
+</carnet>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT carnet (contact)*>
+<!ATTLIST carnet type CDATA #REQUIRED>
+<!ELEMENT contact (information*)>
+<!ATTLIST contact nom CDATA #REQUIRED>
+<!ATTLIST contact prenom CDATA #REQUIRED>
+<!ATTLIST contact telephone CDATA #REQUIRED>
+<!ELEMENT information EMPTY>
+<!ATTLIST information libelle ID #REQUIRED>
+<!ATTLIST information texte CDATA #REQUIRED>
