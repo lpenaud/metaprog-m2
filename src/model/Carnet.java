@@ -1,22 +1,18 @@
 package model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import xml.SerialisableXml;
+import xml.annotations.XmlEntity;
+import xml.annotations.XmlField;
 
+@XmlEntity(tagName = "carnet")
 public class Carnet implements SerialisableXml {
-	protected ArrayList<Contact> contacts;
-	protected String type;
-
 	public Carnet() {
 		this.contacts = new ArrayList<>();
 		type = "commun";
+		
 	}
 
 	public void addContact(Contact c) {
@@ -50,5 +46,17 @@ public class Carnet implements SerialisableXml {
 				.append("</carnet>")
 				.toString();
 	}
+	
+	public String getType() {
+		return type;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
 
+	protected ArrayList<Contact> contacts;
+
+	@XmlField
+	protected String type;
 }
