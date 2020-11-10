@@ -26,7 +26,10 @@ public class Contact implements SerialisableXml {
 				.append("</nom>")
 				.append("<prenom>")
 				.append(prenom)
-				.append("</prenom>");
+				.append("</prenom>")
+				.append("<telephone>")
+				.append(telephone)
+				.append("</telephone>");
 		for (final var information : informations) {
 			builder.append(information.toXmlStringV1());
 		}
@@ -48,8 +51,26 @@ public class Contact implements SerialisableXml {
 		return builder.append("</contact>").toString();
 	}
 	
+	@Override
+	public String toString() {
+		return new StringBuilder(getClass().getCanonicalName())
+				.append("{ nom: ")
+				.append(nom)
+				.append(", prenom: ")
+				.append(prenom)
+				.append(", telephone: ")
+				.append(telephone)
+				.append(", informations: ")
+				.append(informations)
+				.append(" }")
+				.toString();
+	}
+
 	protected String nom;
+
 	protected String prenom;
+
 	protected String telephone;
+
 	protected List<Information> informations;
 }
