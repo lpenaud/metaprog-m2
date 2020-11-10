@@ -1,15 +1,9 @@
 package xml;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.io.IOException;
-
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.junit.jupiter.api.Test;
-
-import org.xml.sax.SAXException;
 
 import model.Carnet;
 

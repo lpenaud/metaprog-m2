@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 @Target(TYPE)
 public @interface XmlEntity {	
 	Class<?>[] constuctor() default {};
-	String tagName();
+	String tagName() default "";
 }

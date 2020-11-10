@@ -15,12 +15,12 @@ import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
+import utils.StringUtils;
 import xml.annotations.XmlEntity;
 import xml.annotations.XmlField;
 
 /**
- * @see org.xml.sax.helpers.DefaultHandler
- * À faire: Ajouter journalisation
+ * @see org.xml.sax.helpers.DefaultHandler À faire: Ajouter journalisation
  */
 public class GestionnaireSax<T> implements ContentHandler, ErrorHandler {
 
@@ -29,7 +29,7 @@ public class GestionnaireSax<T> implements ContentHandler, ErrorHandler {
 		if (entity == null) {
 			throw new Exception("AAAAAAAAAAAAAAAAAAAAh");
 		}
-		this.tagName = entity.tagName();
+		this.tagName = StringUtils.defaultString(entity.tagName(), c.getSimpleName().toLowerCase());
 		this.con = c.getConstructor(entity.constuctor());
 		this.accesseurs = new HashMap<>();
 		for (final var field : c.getFields()) {
@@ -37,10 +37,10 @@ public class GestionnaireSax<T> implements ContentHandler, ErrorHandler {
 			if (xmlField == null) {
 				continue;
 			}
-			this.accesseurs.put(xmlField.tagName().isEmpty() ? field.getName() : xmlField.tagName(),
-					c.getDeclaredMethod(xmlField.accesseur().isEmpty()
-							? "set" + field.getName().substring(0).toUpperCase() + field.getName().substring(1)
-							: xmlField.accesseur(), field.getClass()));
+
+			this.accesseurs.put(StringUtils.defaultString(xmlField.tagName(), field.getName()), c.getDeclaredMethod(
+					StringUtils.defaultString(xmlField.accesseur(), "set" + StringUtils.toTitleCase(field.getName())),
+					field.getType()));
 		}
 	}
 
@@ -82,7 +82,7 @@ public class GestionnaireSax<T> implements ContentHandler, ErrorHandler {
 				throw new SAXException(e);
 			}
 		} else {
-			accesseurCourant = accesseurs.get(qName);			
+			accesseurCourant = accesseurs.get(qName);
 		}
 		System.out.println(new StringBuilder("Début du tag { uri: ").append(uri).append(", localName: ")
 				.append(localName).append(", qName: ").append(qName).append(" }").toString());
