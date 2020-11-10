@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE carnet PUBLIC "CarnetId" "CarnetAttr.dtd">
-<carnet type="commun">
-	<contact nom="Bessac" prenom="Bilbo" telephone="0298989898">
-		<information football="Loisir"/>
-	</contact>
-</carnet>
