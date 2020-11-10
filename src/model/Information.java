@@ -30,7 +30,19 @@ public class Information implements SerialisableXml {
 				.append("\"/>")
 				.toString();
 	}
+	
+	@Override
+	public String toString() {
+		return new StringBuilder(getClass().getCanonicalName())
+				.append("{ libelle: ")
+				.append(libelle)
+				.append(", texte: ")
+				.append(texte)
+				.append(" }")
+				.toString();
+	}
 
 	protected String libelle;
+	
 	protected String texte;
 }
