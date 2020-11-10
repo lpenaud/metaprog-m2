@@ -1,8 +1,13 @@
 package model;
 
 import xml.SerialisableXml;
+import xml.annotations.XmlEntity;
+import xml.annotations.XmlField;
 
+@XmlEntity
 public class Information implements SerialisableXml {
+	
+	public Information() {}
 
 	public Information(final String libelle, final String texte) {
 		this.libelle = libelle;
@@ -41,8 +46,18 @@ public class Information implements SerialisableXml {
 				.append(" }")
 				.toString();
 	}
+	
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+	
+	public void setTexte(String texte) {
+		this.texte = texte;
+	}
 
+	@XmlField
 	protected String libelle;
 	
+	@XmlField
 	protected String texte;
 }

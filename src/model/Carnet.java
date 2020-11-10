@@ -7,7 +7,7 @@ import xml.SerialisableXml;
 import xml.annotations.XmlEntity;
 import xml.annotations.XmlField;
 
-@XmlEntity(tagName = "carnet")
+@XmlEntity
 public class Carnet implements SerialisableXml {
 	public Carnet() {
 		this.contacts = new ArrayList<>();
@@ -54,7 +54,19 @@ public class Carnet implements SerialisableXml {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	@Override
+	public String toString() {
+		return new StringBuilder(getClass().getCanonicalName())
+				.append("{ type: ")
+				.append(type)
+				.append(", contacts: ")
+				.append(contacts)
+				.append(" }")
+				.toString();
+	}
 
+	@XmlField(accesseur = "addContact", tagName = "contact", type = Contact.class)
 	protected ArrayList<Contact> contacts;
 
 	@XmlField

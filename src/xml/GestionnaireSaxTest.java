@@ -19,8 +19,9 @@ class GestionnaireSaxTest {
 			xr.setContentHandler(gestionnaire);
 			xr.parse("tests/test2.xml");
 			final var obj = gestionnaire.getObj();
-			System.out.println("Succès, type = " + obj.getType());
+			System.out.println(obj.toString());
 		} catch (Exception e) {
+			e.printStackTrace();
 			fail(e.getMessage());
 		}
 	}

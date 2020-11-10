@@ -11,4 +11,5 @@ import java.lang.annotation.Target;
 public @interface XmlField {
 	String accesseur() default "";
 	String tagName() default "";
+	Class<?> type() default void.class;
 }

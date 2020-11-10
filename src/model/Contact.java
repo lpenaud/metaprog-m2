@@ -4,18 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import xml.SerialisableXml;
+import xml.annotations.XmlEntity;
+import xml.annotations.XmlField;
 
+@XmlEntity
 public class Contact implements SerialisableXml {
 	
+	public Contact() {
+		this.informations = new ArrayList<>();
+	}
+
 	public Contact(final String nom, final String prenom, final String telephone) {
+		this();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.telephone = telephone;
-		this.informations = new ArrayList<>();
-	}
-	
-	public void addInformations(final Information info) {
-		this.informations.add(info);
 	}
 
 	@Override
@@ -51,6 +54,22 @@ public class Contact implements SerialisableXml {
 		return builder.append("</contact>").toString();
 	}
 	
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	
+	public void addInformations(final Information info) {
+		this.informations.add(info);
+	}
+	
 	@Override
 	public String toString() {
 		return new StringBuilder(getClass().getCanonicalName())
@@ -66,11 +85,15 @@ public class Contact implements SerialisableXml {
 				.toString();
 	}
 
+	@XmlField
 	protected String nom;
 
+	@XmlField
 	protected String prenom;
 
+	@XmlField
 	protected String telephone;
 
+	@XmlField(accesseur = "addInformations", tagName = "information", type = Information.class)
 	protected List<Information> informations;
 }
