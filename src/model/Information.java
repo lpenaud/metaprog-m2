@@ -17,6 +17,7 @@ public class Information implements SerialisableXml {
 				.append("<texte>")
 				.append(texte)
 				.append("</texte>")
+				.append("</information>")
 				.toString();
 	}
 
