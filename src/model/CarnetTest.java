@@ -13,8 +13,7 @@ class CarnetTest {
 
 	void testXmlStringV1(final SerialisableXml serialisable, final String pathname) {
 		try (final var reader = new BufferedReader(new FileReader(pathname))) {
-			final var actual = new StringBuilder(SerialisableXml.EN_TETE)
-					.append(serialisable.toXmlStringV1())
+			final var actual = new StringBuilder(SerialisableXml.EN_TETE_V1).append(serialisable.toXmlStringV1())
 					.toString();
 			System.out.println(actual);
 			assertEquals(reader.readLine(), actual);
@@ -22,11 +21,10 @@ class CarnetTest {
 			fail(e.getMessage());
 		}
 	}
-	
+
 	void testXmlStringV2(final SerialisableXml serialisable, final String pathname) {
 		try (final var reader = new BufferedReader(new FileReader(pathname))) {
-			final var actual = new StringBuilder(SerialisableXml.EN_TETE)
-					.append(serialisable.toXmlStringV2())
+			final var actual = new StringBuilder(SerialisableXml.EN_TETE_V2).append(serialisable.toXmlStringV2())
 					.toString();
 			System.out.println(actual);
 			assertEquals(reader.readLine(), actual);
@@ -39,7 +37,7 @@ class CarnetTest {
 	void test1() {
 		testXmlStringV1(new Carnet(), "tests/test1.xml");
 	}
-	
+
 	@Test
 	void test2() {
 		final var carnet = new Carnet();
@@ -49,12 +47,12 @@ class CarnetTest {
 		carnet.addContact(contact);
 		testXmlStringV1(carnet, "tests/test2.xml");
 	}
-	
+
 	@Test
 	void test3() {
 		testXmlStringV2(new Carnet(), "tests/test3.xml");
 	}
-	
+
 	@Test
 	void test4() {
 		final var carnet = new Carnet();
@@ -64,6 +62,5 @@ class CarnetTest {
 		carnet.addContact(contact);
 		testXmlStringV2(carnet, "tests/test4.xml");
 	}
-	
-	
+
 }

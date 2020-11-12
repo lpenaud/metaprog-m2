@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE Carnet PUBLIC "CarnetId" "Carnet.dtd"><carnet type="commun"><contact nom="Bessac" prenom="Bilbo" telephone="0298989898"><information libelle="Hobby" texte="Musique"/><information libelle="Loisir" texte="Kayak Polo"/></contact></carnet>
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE carnet PUBLIC "CarnetId" "CarnetAttr.dtd"><carnet type="commun"><contact nom="Bessac" prenom="Bilbo" telephone="0298989898"><information libelle="Hobby" texte="Musique"/><information libelle="Loisir" texte="Kayak Polo"/></contact></carnet>
