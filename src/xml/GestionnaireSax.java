@@ -16,7 +16,7 @@ import xml.annotations.XmlEntity;
 /**
  * @see org.xml.sax.helpers.DefaultHandler À faire: Ajouter journalisation
  */
-public class GestionnaireSax<T> implements ContentHandler, ErrorHandler {
+public class GestionnaireSax<T> implements ContentHandler {
 
 	public GestionnaireSax(final Class<T> c) throws Exception {
 		final var entity = c.getAnnotation(XmlEntity.class);
@@ -131,23 +131,6 @@ public class GestionnaireSax<T> implements ContentHandler, ErrorHandler {
 
 	@Override
 	public void skippedEntity(String name) throws SAXException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void warning(SAXParseException exception) throws SAXException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void error(SAXParseException exception) throws SAXException {
-		exception.printStackTrace();
-	}
-
-	@Override
-	public void fatalError(SAXParseException exception) throws SAXException {
 		// TODO Auto-generated method stub
 
 	}

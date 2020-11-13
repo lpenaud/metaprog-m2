@@ -11,8 +11,6 @@ import xml.annotations.XmlField;
 public class Carnet implements SerialisableXml {
 	public Carnet() {
 		this.contacts = new ArrayList<>();
-		type = "commun";
-		
 	}
 
 	public void addContact(Contact c) {
