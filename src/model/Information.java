@@ -47,8 +47,16 @@ public class Information implements SerialisableXml {
 				.toString();
 	}
 	
+	public String getLibelle() {
+		return libelle;
+	}
+	
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+	
+	public String getTexte() {
+		return texte;
 	}
 	
 	public void setTexte(String texte) {

@@ -18,6 +18,14 @@ public class Carnet implements SerialisableXml {
 	public void addContact(Contact c) {
 		this.contacts.add(c);
 	}
+	
+	public Contact getContact(int index) {
+		return this.contacts.get(index);
+	}
+	
+	public int nbContact() {
+		return this.contacts.size();
+	}
 
 	@Override
 	public String toXmlStringV1() {

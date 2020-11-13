@@ -54,20 +54,40 @@ public class Contact implements SerialisableXml {
 		return builder.append("</contact>").toString();
 	}
 	
+	public String getNom() {
+		return this.nom;
+	}
+	
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+	
+	public String getPrenom() {
+		return this.prenom;
 	}
 	
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 	
+	public String getTelephone() {
+		return this.telephone;
+	}
+	
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
+	}
+
+	public Information getInformation(int index) {
+		return this.informations.get(index);
 	}
 	
 	public void addInformations(final Information info) {
 		this.informations.add(info);
+	}
+	
+	public int nbInformation() {
+		return this.informations.size();
 	}
 	
 	@Override
