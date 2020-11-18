@@ -62,6 +62,21 @@ public class Information implements SerialisableXml {
 	public void setTexte(String texte) {
 		this.texte = texte;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (obj == this) {
+			return true;
+		}
+		if (obj instanceof Information) {
+			final Information information = (Information) obj;
+			return information.libelle.equals(libelle) && information.texte.equals(texte);
+		}
+		return false;
+	}
 
 	@XmlField
 	protected String libelle;

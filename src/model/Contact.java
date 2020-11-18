@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 import xml.SerialisableXml;
 import xml.annotations.XmlEntity;
@@ -103,6 +104,37 @@ public class Contact implements SerialisableXml {
 				.append(informations)
 				.append(" }")
 				.toString();
+	}
+	
+	public void pourChaqueInformation(Consumer<Information> consumer) {
+		this.informations.forEach(consumer);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (obj == this) {
+			return true;
+		}
+		if (obj instanceof Contact) {
+			final Contact contact = (Contact) obj;
+			return contact.prenom.equals(prenom) 
+					&& contact.nom.equals(nom)
+					&& contact.telephone.equals(telephone)
+					&& contact.informations.equals(informations);
+		}
+		return false;
+	}
+	
+	public Information getInformation(final String libelle) {
+		for (final Information information : informations) {
+			if (information.libelle.equals(libelle)) {
+				return information;
+			}
+		}
+		return null;
 	}
 
 	@XmlField

@@ -2,17 +2,19 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.function.Consumer;
 
+import visteur.Visitable;
+import visteur.VisiteurModele;
 import xml.SerialisableXml;
 import xml.annotations.XmlEntity;
 import xml.annotations.XmlField;
 
 @XmlEntity
-public class Carnet implements SerialisableXml {
+public class Carnet implements SerialisableXml, Visitable {
 	public Carnet() {
 		this.contacts = new ArrayList<>();
 		type = "commun";
-		
 	}
 
 	public void addContact(Contact c) {
@@ -73,10 +75,34 @@ public class Carnet implements SerialisableXml {
 				.append(" }")
 				.toString();
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (obj == this) {
+			return true;
+		}
+		if (obj instanceof Carnet) {
+			final Carnet carnet = (Carnet) obj;
+			return carnet.type.equals(type) && carnet.contacts.equals(contacts);
+		}
+		return super.equals(obj);
+	}
 
 	@XmlField(accesseur = "addContact", tagName = "contact", type = Contact.class)
 	protected ArrayList<Contact> contacts;
 
 	@XmlField
 	protected String type;
+
+	@Override
+	public void accepter(VisiteurModele visiteur) {
+		visiteur.visite(this);
+	}
+	
+	public void pourChaqueContact(final Consumer<Contact> consumer) {
+		this.contacts.forEach(consumer);
+	}
 }
